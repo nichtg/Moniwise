@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 
 // Firebase configuration
 // Please add in secrets in .env file and DO NOT commit to git! or else...
+// oh yea remember to create the .env file
 const config = {
   apiKey: `${import.meta.env.VITE_apiKey}`,
   authDomain: `${import.meta.env.VITE_authDomain}`,
