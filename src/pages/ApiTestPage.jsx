@@ -6,17 +6,6 @@ import { getItems, panelStyle } from "../assets/Api_ItemConfig";
 const ApiTestPage = () => {
   const [selectedIndex, setSelectedIndex] = useState("uploadTransactions");
 
-  const changeSelectedIndex = () => {
-    // actual intention for this is to change active key based on url path
-    // TODO: change this to use a switch statement once we have URLS paths inplace
-    if(selectedIndex === "uploadTransactions") {
-      setSelectedIndex("2");
-    } else if(selectedIndex === "2") {
-      setSelectedIndex("3");
-    } else if(selectedIndex === "3") {
-      setSelectedIndex("uploadTransactions");
-    }
-  };
   function createTransaction() {
     const requestOptions = {
       method: "POST",
@@ -51,11 +40,12 @@ const ApiTestPage = () => {
         </Col>
         <Col span={24} align="middle">
           <Collapse
+          //items are stored in a... json? i think? in Api_ItemConfig.jsx
+          //been a hot minute since i've touched this
+          //ideally it should expand based on url params
             items={getItems(panelStyle, createTransaction)}
             defaultActiveKey={selectedIndex}
-            activeKey={selectedIndex}
           />
-          <Button type="primary" danger onClick={() => changeSelectedIndex()}>Change collapse active key</Button>
         </Col>
       </Row>
     </div>
