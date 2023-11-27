@@ -1,17 +1,35 @@
 import { Button, Col, Collapse, Row, Typography, theme } from "antd";
 import "./../App.css";
+import TextArea from "antd/es/input/TextArea";
 
 export const getItems = (panelStyle, createTransaction) => [
   {
     key: "uploadTransactions",
-    label: "Upload Transactions",
+    label: "POST: Upload Transactions",
     children: (
-      <Row>
-        <Col span={24}>
-          <Typography.Text>Short writeup of function and required parameters (if any)</Typography.Text>
-        </Col>
-        <Col span={24}>
-          <div className="collapseDiv">
+      <div
+        style={{
+          padding: "10px 50px 20px 50px",
+        }}>
+        <Row>
+          <Col span={24}>
+            <Typography.Text>
+              Description: Adds transactions to user id
+            </Typography.Text>
+          </Col>
+          <TextArea
+            id="createTransactionTextArea"
+            rows={4}
+            placeholder="JSON"
+          />
+          <Col
+            span={24}
+            style={{
+              display: "flex",
+              justifyContent: "end",
+              verticalAlign: "middle",
+              padding: "20px 0px 0px 0px",
+            }}>
             <Button
               className="submitApiButton"
               id="createTransactionButton"
@@ -19,9 +37,9 @@ export const getItems = (panelStyle, createTransaction) => [
               onClick={createTransaction}>
               Submit
             </Button>
-          </div>
-        </Col>
-      </Row>
+          </Col>
+        </Row>
+      </div>
     ),
     style: panelStyle,
   },

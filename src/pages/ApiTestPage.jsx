@@ -26,7 +26,16 @@ const ApiTestPage = () => {
   }
 
   return (
-    <div id="apiDiv" className="apiDiv">
+    <div
+      id="apiDiv"
+      style={{
+        display: "auto",
+        margin: "auto",
+        width: "100%",
+        height: "100vh",
+        textAlign: "center",
+        background: "#040717",
+      }}>
       <Row>
         <Col span={24}>
           <Typography.Title
@@ -34,20 +43,26 @@ const ApiTestPage = () => {
             id="apiPageTitle"
             style={{
               color: "#ffffff",
-            }}
-          >
+            }}>
             API Test Page
           </Typography.Title>
         </Col>
-        <Col span={24} align="middle">
-          <Collapse
-            //items are stored in a... json? i think? in Api_ItemConfig.jsx
-            //been a hot minute since i've touched this
-            //ideally it should expand based on url params
-            items={getItems(panelStyle, createTransaction)}
-            defaultActiveKey={selectedIndex}
-          />
-        </Col>
+        <div //this is the div that holds the collapsible menu
+          style={{
+            width: "100%",
+            padding: "0px 100px 50px 100px",
+          }}>
+          <Col span={24} align="middle">
+            <Collapse style={{
+              textAlign: "left",
+            }}
+              //items are stored in a... json? i think? in Api_ItemConfig.jsx
+              //ideally it should expand based on url params
+              items={getItems(panelStyle, createTransaction)}
+              defaultActiveKey={selectedIndex}
+            />
+          </Col>
+        </div>
       </Row>
     </div>
   );

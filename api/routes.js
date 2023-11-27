@@ -13,6 +13,7 @@ import {
   where,
 } from "firebase/firestore";
 import firebaseApp from "../Firebase.js";
+import { v4 as uuidv4 } from 'uuid';
 
 const db = getFirestore(firebaseApp);
 
@@ -55,16 +56,16 @@ routes.get("/:userID/transactions", async (req, res) => {
     var userID = req.params.userID;
 
     try {
-      await getDocs(
-        collection(db, "users", userID, "transactions")
-      ).then((querySnapshot) => {
-        if (querySnapshot.empty) {
-          res.status(404).send("No transactions found for user");
-        } else {
-          var docs = querySnapshot.docs.map((doc) => doc.data());
-          res.send(JSON.parse(JSON.stringify(docs)));
+      await getDocs(collection(db, "users", userID, "transactions")).then(
+        (querySnapshot) => {
+          if (querySnapshot.empty) {
+            res.status(404).send("No transactions found for user");
+          } else {
+            var docs = querySnapshot.docs.map((doc) => doc.data());
+            res.send(JSON.parse(JSON.stringify(docs)));
+          }
         }
-      });
+      );
     } catch (error) {
       switch (error.code) {
         case "permission-denied":
@@ -85,7 +86,7 @@ routes.get("/:userID/transactions", async (req, res) => {
   }
 });
 
-// add transaction to userID
+// add transaction to userID, creates new transactionID with uuidv4
 routes.post("/:userID/transactions", async (req, res) => {
   if (req.body || req.params) {
     var userID = req.params.userID;
@@ -95,12 +96,15 @@ routes.post("/:userID/transactions", async (req, res) => {
     var category = req.body.category;
 
     try {
-      // const response = await instance.post("/");
-      await setDoc(doc(db, "users", userID, "transactions"), {
-        transactions: timestamp,
-        note: note,
+      await setDoc(doc(db, "users", userID, "transactions", uuidv4), {
         amount: amount,
         category: category,
+        create_date: timestamp,
+        modify_date: update_timestamp,
+        transaction_name: transaction_name,
+        note: note,
+        reminder: reminder, // array containing create_date, end_date, frequency, and trigger time
+        transaction_type: transaction_type,
       });
       var returnString = `Transaction added to ${userID}`;
 
