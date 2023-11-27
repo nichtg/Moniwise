@@ -34,15 +34,16 @@ const ApiTestPage = () => {
             id="apiPageTitle"
             style={{
               color: "#ffffff",
-            }}>
+            }}
+          >
             API Test Page
           </Typography.Title>
         </Col>
         <Col span={24} align="middle">
           <Collapse
-          //items are stored in a... json? i think? in Api_ItemConfig.jsx
-          //been a hot minute since i've touched this
-          //ideally it should expand based on url params
+            //items are stored in a... json? i think? in Api_ItemConfig.jsx
+            //been a hot minute since i've touched this
+            //ideally it should expand based on url params
             items={getItems(panelStyle, createTransaction)}
             defaultActiveKey={selectedIndex}
           />
