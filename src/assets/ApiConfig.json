@@ -1,0 +1,26 @@
+[
+  {
+    "label": "Upload Transaction to userID",
+    "description": "Uploads a transaction to a user's account.",
+    "name": "uploadTransaction",
+    "method": "POST",
+    "input": "textarea",
+    "rules": [{ "required": true, "message": "Please input your description!" }]
+  },
+  {
+    "label": "Test Endpoint",
+    "description": "Test Endpoint",
+    "name": "testEndpoint",
+    "method": "POST",
+    "input": "text",
+    "rules": [{ "required": true, "message": "Please input your description!" }]
+  },
+  {
+    "label": "Get all transactions from userID",
+    "description": "Gets all transactions from a user's account.",
+    "name": "getTransactions",
+    "method": "POST",
+    "input": "textarea",
+    "rules": [{ "required": true, "message": "Please input your description!" }]
+  }
+]

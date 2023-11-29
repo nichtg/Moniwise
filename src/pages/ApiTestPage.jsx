@@ -1,11 +1,11 @@
-import { Button, Col, Collapse, Row, Typography, theme } from "antd";
+import { Button, Col, Collapse, Row, Typography, theme, Form } from "antd";
 import { useState } from "react";
 import "./../App.css";
-import { getItems, panelStyle } from "../assets/Api_ItemConfig";
+import ApiEndpointGenerator from "../assets/ApiEndpointGenerator";
+import Api_ItemConfig from "../assets/Api_ItemConfig";
+import apiConfig from "../assets/ApiConfig.json";
 
 const ApiTestPage = () => {
-  const [selectedIndex, setSelectedIndex] = useState("uploadTransactions");
-
   function createTransaction() {
     const requestOptions = {
       method: "POST",
@@ -53,14 +53,8 @@ const ApiTestPage = () => {
             padding: "0px 100px 50px 100px",
           }}>
           <Col span={24} align="middle">
-            <Collapse style={{
-              textAlign: "left",
-            }}
-              //items are stored in a... json? i think? in Api_ItemConfig.jsx
-              //ideally it should expand based on url params
-              items={getItems(panelStyle, createTransaction)}
-              defaultActiveKey={selectedIndex}
-            />
+            {/* Passes a json file containing endpoints to generate */}
+            {ApiEndpointGenerator(apiConfig, createTransaction)}
           </Col>
         </div>
       </Row>

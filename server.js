@@ -19,5 +19,5 @@ app.get("/test", (req, res) => {
   res.send("Hello World!");
 });
 app.listen(3000, () =>
-  console.log("UI hosted on http://localhost:5173\nServer hosted on http://localhost:3000")
+  console.log("UI hosted on http://localhost:5173\nAPI Testing is on http://localhost:5173/api\nServer hosted on http://localhost:3000")
 );
