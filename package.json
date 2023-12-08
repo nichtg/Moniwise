@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"vite\" \"nodemon server\"",
+    "dev": "cross-env NODE_ENV=development concurrently \"vite --clearScreen false\" \"nodemon -r dotenv/config server\"",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
@@ -14,7 +14,7 @@
     "axios": "^1.4.0",
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
+    "cross-env": "^7.0.3",
     "express": "^4.18.2",
     "firebase": "^10.1.0",
     "nodemon": "^3.0.1",
