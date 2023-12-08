@@ -5,6 +5,14 @@
     "name": "uploadTransaction",
     "method": "POST",
     "input": "textarea",
+    "value": {
+      "key1": "value1",
+      "key2": "value2",
+      "key3": {
+        "nestedKey1": "nestedValue1",
+        "nestedKey2": "nestedValue2"
+      }
+    },
     "rules": [{ "required": true, "message": "Please input your description!" }]
   },
   {
@@ -13,6 +21,7 @@
     "name": "testEndpoint",
     "method": "POST",
     "input": "text",
+    "value": "testValue",
     "rules": [{ "required": true, "message": "Please input your description!" }]
   },
   {
@@ -21,6 +30,17 @@
     "name": "getTransactions",
     "method": "POST",
     "input": "textarea",
+    "value": "",
+    "rules": [{ "required": true, "message": "Please input your description!" }]
+  },
+  {
+    "label": "Register User",
+    "description": "Registers a user.",
+    "name": "registerUser",
+    "method": "POST",
+    "input": "textarea",
+    "value": "",
     "rules": [{ "required": true, "message": "Please input your description!" }]
   }
+  
 ]
